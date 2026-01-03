@@ -25,9 +25,23 @@ Execute Django admin and create details for 10 books
 ## PROGRAM
 ```
 models.py
+
+from django.db import models
+from django.contrib import admin
+class Car (models.Model):
+    model=models.CharField(max_length=20,primary_key="model")
+    brand=models.CharField(max_length=100)
+    price=models.IntegerField()
+    year=models.IntegerField()
+class CarAdmin(admin.ModelAdmin):
+    list_display=('model','brand','price','year')
 ```
 ```
 admin.py
+
+from django.contrib import admin
+from.models import Car,CarAdmin
+admin.site.register(Car,CarAdmin) 
 ```
 ## OUTPUT
 
